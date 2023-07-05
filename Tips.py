@@ -22,7 +22,7 @@ sb.set_style("white")
 st.pyplot(fig4)
 
 st.write("""
-### Шаг 5 | Диаграмма рассеивания - связь общего счета и размера чаевых
+### Шаг 5 | Диаграмма рассеивания - связь размера счета и размера чаевых
 """)
          
 fig5 = plt.figure(figsize=(5,5))       
@@ -34,14 +34,17 @@ st.write("""
 ### Шаг 7 | График, связывающий размер счета, размер группы и чаевые
 """)
          
-fig6 = plt.figure(figsize=(8,3)) 
-ax6 = plt.axes()
+sb.set_style("dark")
 
-sb.lineplot(tips, y='size', x='total_bill')
-sb.lineplot(tips, y='size', x='tip')
-ax6.set_xlabel('total bill / tip')
+fig7 = plt.figure(figsize=(5,5))       
+ax7 = sb.scatterplot(tips, y='tip', x='total_bill', hue='size',
+                      size='size', palette='crest')
+# cbar = ax7.figure.colorbar(ax7.collections[0])
+# cbar.set_label('Size')
 
-st.pyplot(fig6)
+
+st.pyplot(fig7)
+
 
 # Тут странный график получился
 
