@@ -39,8 +39,16 @@ sb.set_style("dark")
 fig7 = plt.figure(figsize=(5,5))       
 ax7 = sb.scatterplot(tips, y='tip', x='total_bill', hue='size',
                       size='size', palette='crest')
-# cbar = ax7.figure.colorbar(ax7.collections[0])
-# cbar.set_label('Size')
+
+norm = plt.Normalize(tips['size'].min(), tips['size'].max())
+sm = plt.cm.ScalarMappable(cmap="crest", norm=norm)
+sm.set_array([])
+
+# Remove the legend and add a colorbar
+
+ax7.get_legend().remove()
+ax7.figure.colorbar(sm)
+
 
 
 st.pyplot(fig7)
